@@ -1,16 +1,26 @@
 # Legacy POC - Lúpulo
 
-## Para subir o banco de dados:
-Abra um terminal em **src/main/resources/sql**
+## Como executar
 
-`docker-compose up`
+### Execução automática
 
-Em um novo terminal: 
+Para buildar a aplicação e criar a imagem docker:
 
-`docker exec -it sql_db_1 bash`
+`./gradlew build docker`
 
-`mysql -uroot -proot`
+Para subir todos os serviços:
 
-`use lupulo_db;`
+`docker-compose up -d`
 
-Copie e cole o conteúdo de **src/main/resources/sql/create-tables.sql**  
+### Em desenvolvimento, rodando pela IDE
+
+Para subir o rabbitmq:
+
+`docker-compose up -d rabbitmq`
+
+Para subir o mysql:
+
+`docker-compose up -d db`
+
+Execute a aplicação no seu editor favorito.
+
