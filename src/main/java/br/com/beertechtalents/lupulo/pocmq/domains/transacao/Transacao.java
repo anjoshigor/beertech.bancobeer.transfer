@@ -16,6 +16,7 @@ import java.util.UUID;
 @Data
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class Transacao {
 
@@ -23,15 +24,15 @@ public class Transacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 10)
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private TipoTransacao tipo;
 
+    @Column(precision = 15, scale = 2, nullable = false)
     private BigDecimal valor;
 
     @CreatedDate
     private Timestamp datahora;
-    @GeneratedValue(generator = "uuid2")
 
     @Column(columnDefinition = "BINARY(16)")
     private UUID contaHash;
